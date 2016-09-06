@@ -18,7 +18,7 @@ team score sheets - folder to store CSV files of team specific scores
 templates - folder storing null templates of scores sheets. Used to verify structure of forecast submissions
 
 
-FILES: 
+##FILES: 
 
 15-16_ILINet_Flu.csv - ILINet data from the season as of Week 28
 
@@ -51,7 +51,7 @@ weekly_flu_targets.csv - weekly targets for now/nearcasting generated from weekl
 weekly_targets.R - generates weekly targets to score 1-4 week ahead forecasts.
 
 
-NOTES:
+##NOTES:
 Your forecasts to be scored must be structured in the same manner as the "templates" folder. If probabilities
 in a particular column do not sum to between 0.9 and 1.1 then the probabilities in that row will be set to NA. 
 As the verify_forecasts file runs it will output the number of columns that have been normalized in a particular
