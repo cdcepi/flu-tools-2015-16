@@ -29,15 +29,14 @@ flu_targets - Targets imported into Process_Submission.R to score the forecasts.
 
 Process_Submission.R - main file to score submissions and generate plots of forecasts and scores
 	
-	DEPENDENCIES:
-	
+DEPENDENCIES:
 	import_forecast.R - import forecast CSV files from "forecast_submissions" folder and templates
-			 	from "templates" folder
+	from "templates" folder
 
 	import_forecast_data.R - convert forecasts from lists to single data frame
 
 	plot_forecasts_ggplot.R - graph individual forecasts with approximate confidence bands and comparitive
-					plots betweeen teams
+				plots betweeen teams
 
 	plot_scores_flu_2015-16.R - plot individual forecast scores and comparitive scores between forecasts 
 
