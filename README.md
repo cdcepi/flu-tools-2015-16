@@ -29,20 +29,20 @@ flu_targets - Targets imported into Process_Submission.R to score the forecasts.
 
 Process_Submission.R - main file to score submissions and generate plots of forecasts and scores
 	
-DEPENDENCIES:
-	import_forecast.R - import forecast CSV files from "forecast_submissions" folder and templates
-	from "templates" folder
+	DEPENDENCIES:
+		import_forecast.R - import forecast CSV files from "forecast_submissions" folder and templates
+		from "templates" folder
 
-	import_forecast_data.R - convert forecasts from lists to single data frame
+		import_forecast_data.R - convert forecasts from lists to single data frame
 
-	plot_forecasts_ggplot.R - graph individual forecasts with approximate confidence bands and comparitive
+		plot_forecasts_ggplot.R - graph individual forecasts with approximate confidence bands and comparitive
 				plots betweeen teams
 
-	plot_scores_flu_2015-16.R - plot individual forecast scores and comparitive scores between forecasts 
+		plot_scores_flu_2015-16.R - plot individual forecast scores and comparitive scores between forecasts 
 
-	three_bin_score.R - generate log score based on the three bin scoring system
+		three_bin_score.R - generate log score based on the three bin scoring system
 
-	verify_forecasts.R - verify forecasts submitted. Normalize probabilities if sum to between 0.9 and 1.1,
+		verify_forecasts.R - verify forecasts submitted. Normalize probabilities if sum to between 0.9 and 1.1,
 				otherwise generate error and set to missing.
 
 weekly_flu_targets.csv - weekly targets for now/nearcasting generated from weekly_targets.R
