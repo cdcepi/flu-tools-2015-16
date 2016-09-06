@@ -9,7 +9,7 @@ compare_plots - folder to store plots comparing forecasts between teams. Created
 forecast_base - folder storing R code used in main Process_Submission file
 
 forecast_submissions - folder to store submissions to be scored. Must be structured in the same manner as 
-	"templates" folder. *You* must create this folder to store your submission in.
+	"templates" folder. **You** must create this folder to store your submission in.
 
 team_plots - folder to store plots of team forecasts with approximated confidence bands. Created automatically by Process_Submission.R
 
