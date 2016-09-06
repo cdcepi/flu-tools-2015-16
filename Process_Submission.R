@@ -74,6 +74,8 @@ forecast.intervals <- summarize.forecasts(forecast.data, this.team, ci=c(0.5, 0.
 
 ### Generate comparitive plots for teams with other teams blinded
 
+#Create folder for output if it doesn't exist
+dir.create(file.path("compare_plots/"), showWarnings = FALSE)
 #Create data frame matching team names with blinded letters
 team.blind <- data.frame(team=c("4sight","arete","cu1","cu2","delphi-archefilter","delphi-epicast",
                                    "delphi-stat","isu","jl","kbsi1","kot","neu","psi","umn"),
@@ -83,38 +85,38 @@ blinded.teams <- c("4sight","arete","cu1","cu2","delphi-archefilter","delphi-epi
                    "delphi-stat","isu","jl","kbsi1","kot","neu","psi","umn")
 
 ### generate a pdf of comparitive forecast plots
-forecast.compare(forecast.data, "compare plots/all_teams_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/all_teams_compare_predictions.pdf",
                  "2015/2016")
-forecast.compare(forecast.data, "compare plots/all_blind_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/all_blind_compare_predictions.pdf",
                  "2015/2016",blinded.teams=blinded.teams)
-forecast.compare(forecast.data, "compare plots/test_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/test_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="4sight"))
-forecast.compare(forecast.data, "compare plots/arete_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/arete_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="arete"))
-forecast.compare(forecast.data, "compare plots/cu_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/cu_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="cu1" &
                                                     blinded.teams != "cu2"))
-forecast.compare(forecast.data, "compare plots/delphi_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/delphi_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="delphi-archefilter" &
                                                      blinded.teams != "delphi-epicast" &
                                                      blinded.teams != "delphi-stat"))
-forecast.compare(forecast.data, "compare plots/isu_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/isu_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="isu"))
-forecast.compare(forecast.data, "compare plots/jl_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/jl_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="jl"))
-forecast.compare(forecast.data, "compare plots/kbsi1_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/kbsi1_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="kbsi1"))
-forecast.compare(forecast.data, "compare plots/kot_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/kot_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="kot"))
-forecast.compare(forecast.data, "compare plots/neu_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/neu_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="neu"))
-forecast.compare(forecast.data, "compare plots/psi_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/psi_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="psi"))
-forecast.compare(forecast.data, "compare plots/umn_compare_predictions.pdf",
+forecast.compare(forecast.data, "compare_plots/umn_compare_predictions.pdf",
                  "2015/2016",blinded.teams=subset(blinded.teams,blinded.teams!="umn"))
 
 ### Plots with all teams together for presentation
-forecast.compare(forecast.data, "compare plots/all_blind_compare_predictions_oneplot.pdf",
+forecast.compare(forecast.data, "compare_plots/all_blind_compare_predictions_oneplot.pdf",
                  "2015/2016",blinded.teams=blinded.teams, facet=F,week.breaks="4 weeks")
 
 
@@ -132,32 +134,35 @@ forecast.scores <- calculate.three.bin.scores(forecast.data, targets)
 forecast.scores <- mutate(forecast.scores, 
                           score = ifelse(score < -10 | is.na(score), -10, score))
 
+### Create folder for output if it doesn't exist
+dir.create(file.path("team_score_sheets/"), showWarnings = FALSE)
+
 ### save as csv file with files for each team
 write.csv(forecast.scores, file="forecast_scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="4sight",],
-          file="team score sheets/4sight_Scores.csv", row.names=F)
+          file="team_score_sheets/4sight_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="arete",],
-          file="team score sheets/ARETE_Scores.csv", row.names=F)
+          file="team_score_sheets/ARETE_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="cu1"|forecast.scores$team=="cu2",],
-          file="team score sheets/Columbia_Scores.csv", row.names=F)
+          file="team_score_sheets/Columbia_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="delphi-archefilter" | 
                             forecast.scores$team=="delphi-epicast" | 
                             forecast.scores$team=="delphi-stat",],
-          file="team score sheets/Delphi_Scores.csv", row.names=F)
+          file="team_score_sheets/Delphi_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="isu",],
-          file="team score sheets/ISU_Scores.csv", row.names=F)
+          file="team_score_sheets/ISU_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="jl",],
-          file="team score sheets/JL_Scores.csv", row.names=F)
+          file="team_score_sheets/JL_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="kbsi1",],
-          file="team score sheets/KBSI1_Scores.csv", row.names=F)
+          file="team_score_sheets/KBSI1_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="kot",],
-          file="team score sheets/KoT_Scores.csv", row.names=F)
+          file="team_score_sheets/KoT_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="neu",],
-          file="team score sheets/Northeastern_Scores.csv", row.names=F)
+          file="team_score_sheets/Northeastern_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="psi",],
-          file="team score sheets/PredictiveScience_Scores.csv", row.names=F)
+          file="team_score_sheets/PredictiveScience_Scores.csv", row.names=F)
 write.csv(forecast.scores[forecast.scores$team=="umn",],
-          file="team score sheets/UMN_Scores.csv", row.names=F)
+          file="team_score_sheets/UMN_Scores.csv", row.names=F)
 
 
 ### save as R object
@@ -167,31 +172,33 @@ save(forecast.scores, file="forecast_scores.RData")
 ### plot scores
 source("forecast_base/plot_scores_flu_2015-16.R")
 
+#Create folder for output if it doesn't exist
+dir.create(file.path("team_plots/"), showWarnings = FALSE)
 
 plot.scores.team(forecast.scores, these.teams="4sight",blind=T,
-                 file=paste0("team plots/4sight_score_plots.pdf"))
+                 file=paste0("team_plots/4sight_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="arete",blind=T,
-                 file=paste0("team plots/arete_score_plots.pdf"))
+                 file=paste0("team_plots/arete_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams=c("cu1","cu2"),blind=T,
-                 file=paste0("team plots/cu_score_plots.pdf"))
+                 file=paste0("team_plots/cu_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams=c("delphi-archefilter",
                                                 "delphi-epicast",
                                                 "delphi-stat"),blind=T,
-                 file=paste0("team plots/delphi_score_plots.pdf"))
+                 file=paste0("team_plots/delphi_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="isu",blind=T,
-                 file=paste0("team plots/isu_score_plots.pdf"))
+                 file=paste0("team_plots/isu_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="jl",blind=T,
-                 file=paste0("team plots/jl_score_plots.pdf"))
+                 file=paste0("team_plots/jl_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="kbsi1",blind=T,
-                 file=paste0("team plots/kbsi1_score_plots.pdf"))
+                 file=paste0("team_plots/kbsi1_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="kot",blind=T,
-                 file=paste0("team plots/kot_score_plots.pdf"))
+                 file=paste0("team_plots/kot_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="neu",blind=T,
-                 file=paste0("team plots/neu_score_plots.pdf"))
+                 file=paste0("team_plots/neu_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="psi",blind=T,
-                 file=paste0("team plots/psi_score_plots.pdf"))
+                 file=paste0("team_plots/psi_score_plots.pdf"))
 plot.scores.team(forecast.scores, these.teams="umn",blind=T,
-                 file=paste0("team plots/umn_score_plots.pdf"))
+                 file=paste0("team_plots/umn_score_plots.pdf"))
 
 
 ### plot number of plots within 1 unit of true amount
