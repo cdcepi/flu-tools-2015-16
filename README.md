@@ -4,16 +4,16 @@ Here are all of the files/code used to score the 2015/2016 flu forecasting chall
 
 ##FOLDERS:
 
-compare_plots - folder to store plots comparing forecasts between teams
+compare_plots - folder to store plots comparing forecasts between teams. Created automatically by Process_Submission.R
 
 forecast_base - folder storing R code used in main Process_Submission file
 
 forecast_submissions - folder to store submissions to be scored. Must be structured in the same manner as 
-	"templates" folder
+	"templates" folder. *You* must create this folder to store your submission in.
 
-team plots - folder to store plots of team forecasts with approximated confidence bands
+team_plots - folder to store plots of team forecasts with approximated confidence bands. Created automatically by Process_Submission.R
 
-team score sheets - folder to store CSV files of team specific scores
+team_score_sheets - folder to store CSV files of team specific scores. Created automatically by Process_Submission.R
 
 templates - folder storing null templates of scores sheets. Used to verify structure of forecast submissions
 
