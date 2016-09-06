@@ -2,7 +2,7 @@
 
 Here are all of the files/code used to score the 2015/2016 flu forecasting challenge submissions. I've outlined the dependency structures below and how the files are used below. Please let me know if you have any questions or suggestions to improve the code!
 
-FOLDERS:
+##FOLDERS:
 
 compare_plots - folder to store plots comparing forecasts between teams
 
