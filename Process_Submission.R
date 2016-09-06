@@ -60,10 +60,14 @@ source("forecast_base/plot_forecasts_ggplot.R")
 forecast.data$season <- "2015/2016"
  
 ### Generate pdfs of forecast plots for all teams for specified seasons
+
+#Create folder for output if it doesn't exist
+dir.create(file.path("team_plots/"), showWarnings = FALSE)
+
 #Loop to plot forecasts for all teams with approximate confidence bands
 for(this.team in levels(as.factor(forecast.data$team))){
   plot.forecast(this.team, forecast.data,
-                paste0("team plots/",this.team,"_predictions", ".pdf"),
+                paste0("team_plots/",this.team,"_predictions", ".pdf"),
                 these.seasons)
 }
 
@@ -171,9 +175,6 @@ save(forecast.scores, file="forecast_scores.RData")
 ##############################################################
 ### plot scores
 source("forecast_base/plot_scores_flu_2015-16.R")
-
-#Create folder for output if it doesn't exist
-dir.create(file.path("team_plots/"), showWarnings = FALSE)
 
 plot.scores.team(forecast.scores, these.teams="4sight",blind=T,
                  file=paste0("team_plots/4sight_score_plots.pdf"))
