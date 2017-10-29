@@ -9,7 +9,7 @@ Here are all of the files/code used to score the 2015/2016 flu forecasting chall
 `forecast_base` - folder storing R code used in main Process_Submission file
 
 `forecast_submissions` - folder to store submissions to be scored. Must be structured in the same manner as
-	"templates" folder. **You** must create this folder to store your submission in.
+	`templates` folder. **You** must create this folder to store your submission in.
 
 `team_plots` - folder to store plots of team forecasts with approximated confidence bands. Created automatically by `Process_Submission.R`
 
@@ -51,7 +51,7 @@ from `templates` folder
 
 
 ## Notes
-Your forecasts to be scored must be structured in the same manner as the "templates" folder. If probabilities
+Your forecasts to be scored must be structured in the same manner as the `templates` folder. If probabilities
 in a particular column do not sum to between 0.9 and 1.1 then the probabilities in that row will be set to NA.
 As the `verify_forecasts` file runs it will output the number of columns that have been normalized in a particular
 submission and also generate warnings for any missing values.
